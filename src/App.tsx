@@ -1,14 +1,12 @@
 import React from 'react';
-import GuessWordContainer from "./components/GuessWordContainer";
+import Content from './components/layout/Content';
 import Header from './components/layout/Header';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Header />
-      <div>
-        <GuessWordContainer />
-      </div>
+      <Content />
     </div>
   );
 }

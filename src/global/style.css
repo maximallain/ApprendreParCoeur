@@ -11,13 +11,23 @@ body {
   margin: 0;
 }
 
+html,
+body,
+#root,
+.app {
+  height: 100%;
+}
+
+.app {
+  display: flex;
+}
+
 header {
-  height: 70px;
   background-color: #f0c808;
   border-bottom: solid 2px #086788;
-  transition: height 200ms ease-in;
   position: fixed;
   top: 0;
+  height: 70px;
   width: 100%;
   padding-left: 16px;
 }
@@ -25,4 +35,13 @@ header {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.content {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
