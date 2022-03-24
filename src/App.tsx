@@ -1,14 +1,11 @@
 import React from 'react';
-import logo from './assets/logo.svg';
-import './global/styles.css';
 import GuessWordContainer from "./components/GuessWordContainer";
+import Header from './components/layout/Header';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-       <h1>ApprendreParCoeur.com</h1>
-      </header>
+      <Header />
       <div>
         <GuessWordContainer />
       </div>
