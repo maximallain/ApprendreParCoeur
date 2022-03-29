@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import GuessWordContainer from '../GuessWordContainer';
 
 const Content = () => {
+  const [hasBegun, setHasBegun] = useState(false);
+
   return (
     <div className="content">
-      <button>
+      {hasBegun ?
+      <GuessWordContainer />
+      :
+      <button onClick={() => setHasBegun(true)}>
         Commencer
       </button>
+    }
     </div>
   )
 }
