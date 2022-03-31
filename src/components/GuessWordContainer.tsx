@@ -3,18 +3,17 @@ import './GuessWordContainer.css';
 
 const GuessWordContainer = () => {
   return (
-    <div className='container'>
-        <div className="header">
-          (Consigne...) Quelle est la définition du mot ?
+    <div className='card'>
+        <div className="card-header">
+          <div className='card-header-title'>
+            Définition
+          </div>
         </div>
 
-        <div className='body'>
-            Aristocrate
-        </div>
-
-        <div className='footer'>
-          <button className='postive-button'>Je sais !</button>
-          <button className='negative-button'>Je sais pas</button>
+        <div className='card-content'>
+          <div className='title is-3 '>Erudit</div>
+          <button className='button is-primary'>Je sais !</button>
+          <button className='button is-warning'>Je sais pas</button>
         </div>
     </div>
     )
