@@ -46,6 +46,7 @@ const GuessWordContainer = () => {
   const [knowsTheDefinition, setKnowsTheDefinition] = useState<boolean | undefined>(undefined);
   const [wordDefinitionIndex, setWordDefinitionIndex] = useState(0);
   const [isListTerminated, setIsListTerminated] = useState(false);
+  const [score, setScore] = useState(0);
   const currentWordDefinition = useMemo(() => WORDS_DEFINITIONS[wordDefinitionIndex], [wordDefinitionIndex]);
 
   const answer = () => setHasAnswered(true);
@@ -99,7 +100,11 @@ const GuessWordContainer = () => {
 
   const hasAnsweredAndKnowsButtons = useMemo(() => {
     const next = () => displayNextWord(wordDefinitionIndex);
-    const IConfirmIKnewButton = generateButton("Je confirme que je sais", next, "primary");
+    const nextAndIncrementScore = () => {
+      next();
+      setScore(score + 1);
+    };
+    const IConfirmIKnewButton = generateButton("Je confirme que je sais", nextAndIncrementScore, "primary");
     const FinallyIDidntKnowButton = generateButton("Ah ! En fait, non, je ne l'avais pas", next, "warning");
 
     return (
@@ -127,7 +132,9 @@ const GuessWordContainer = () => {
   return (
     <div className="card guess-word-container">
       {isListTerminated ? (
-        <div className="title is-1 has-text-centered has-text-weight-bold mt-6 mb-0">FINI !</div>
+        <div className="title is-1 has-text-centered has-text-weight-bold mt-6 mb-0">
+          Ton score : {score}/{WORDS_DEFINITIONS.length}
+        </div>
       ) : (
         <div className="card-content is-flex is-flex-direction-column is-justify-content-space-between">
           <div className="title is-1 has-text-centered has-text-weight-bold mt-6 mb-0">
