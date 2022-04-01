@@ -1,9 +1,9 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import "./GuessWordContainer.css";
 
 const GuessWordContainer = () => {
   const [hasAnswered, setHasAnswered] = useState(false);
-  const [knowsTheDefinition, setKnowsTheDefinition] = useState<boolean | null>(null);
+  const [knowsTheDefinition, setKnowsTheDefinition] = useState<boolean | undefined>(undefined);
 
   const answer = () => setHasAnswered(true);
   const answerAndKnow = () => {
@@ -22,49 +22,60 @@ const GuessWordContainer = () => {
     </p>
   );
 
-  const answerButtons = (
-    <div className="columns">
+  const generateButton = useCallback((text: string, action: () => void, color: "primary" | "warning") => {
+    return (
       <div className="column is-centered">
-        <button className="button is-primary is-large has-text-weight-bold is-fullwidth" onClick={answerAndKnow}>
-          Je sais !
+        <button className={"button is-" + color + " is-large has-text-weight-bold is-fullwidth"} onClick={action}>
+          {text}
         </button>
       </div>
+    );
+  }, []);
 
-      <div className="column">
-        <button className="button is-warning is-large has-text-weight-bold is-fullwidth" onClick={answerAndDontKnow}>
-          Je sais pas
-        </button>
-      </div>
-    </div>
-  );
+  const answerButtons = useMemo(() => {
+    const IKnowButton = generateButton("Je sais !", answerAndKnow, "primary");
+    const IDontKnowButton = generateButton("Je sais pas", answerAndDontKnow, "warning");
 
-  const answerAndKnowsButtons = (
-    <div className="columns">
-      <div className="column is-centered">
-        <button
-          className="button is-primary is-large has-text-weight-bold is-fullwidth"
-          onClick={() => console.log("Je confirme que je sais")}
-        >
-          Je confirme que je sais
-        </button>
+    return (
+      <div className="columns">
+        {IKnowButton}
+        {IDontKnowButton}
       </div>
+    );
+  }, []);
 
-      <div className="column">
-        <button
-          className="button is-warning is-large has-text-weight-bold is-fullwidth"
-          onClick={() => console.log("Ah ! En fait, non, je ne l'avais pas")}
-        >
-          Ah ! En fait, non, je ne l{"'"}avais pas
-        </button>
+  const hasAnsweredAndKnowsButtons = useMemo(() => {
+    const IConfirmIKnewButton = generateButton(
+      "Je confirme que je sais",
+      () => console.log("Je confirme que je sais"),
+      "primary"
+    );
+    const FinallyIDidntKnowButton = generateButton(
+      "Ah ! En fait, non, je ne l'avais pas",
+      () => console.log("Ah ! En fait, non, je ne l'avais pas"),
+      "warning"
+    );
+
+    return (
+      <div className="columns">
+        {IConfirmIKnewButton}
+        {FinallyIDidntKnowButton}
       </div>
-    </div>
+    );
+  }, []);
+
+  const hasAnsweredAndDontKnowsButtons = useMemo(
+    () => (
+      <div className="columns">
+        {generateButton("C'est lu. Allez la suite !", () => console.log("C'est lu. Allez la suite !"), "primary")}
+      </div>
+    ),
+    []
   );
 
   const buttons = useMemo(() => {
-    if (knowsTheDefinition === true) {
-      return answerAndKnowsButtons;
-    }
-    return answerButtons;
+    if (!hasAnswered) return answerButtons;
+    return knowsTheDefinition ? hasAnsweredAndKnowsButtons : hasAnsweredAndDontKnowsButtons;
   }, [knowsTheDefinition]);
 
   return (
