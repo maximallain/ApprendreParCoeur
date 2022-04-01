@@ -1,18 +1,10 @@
-.container {
-  border: solid 3px;
-  height: 500px;
+.guess-word-container {
+  height: 380px;
   display: flex;
   flex-direction: column;
   width: 80%;
   max-width: 600px;
-  background-color: #fff1d0;
-  justify-content: space-between;
-}
-
-.header {
-  font-style: italic;
-  background-color: #086788;
-  color: white;
+  /* justify-content: space-between; */
 }
 
 .body {
@@ -20,26 +12,11 @@
   align-self: center;
 }
 
-.footer {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-.footer button {
-  padding: 32px;
+.buttons-container button {
   margin: 16px;
-  margin-bottom: 40px;
-  font-size: larger;
   font-weight: bold;
-  border-radius: 16px;
 }
 
-.postive-button {
-  background-color: #07a0c3;
-  color: white;
-}
-
-.negative-button {
-  background-color: #f0c808;
+.card-content {
+  height: 100%;
 }
