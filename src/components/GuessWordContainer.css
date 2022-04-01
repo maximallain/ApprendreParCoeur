@@ -1,20 +1,6 @@
 .guess-word-container {
   height: 380px;
-  display: flex;
-  flex-direction: column;
   width: 80%;
-  max-width: 600px;
-  /* justify-content: space-between; */
-}
-
-.body {
-  font-size: xx-large;
-  align-self: center;
-}
-
-.buttons-container button {
-  margin: 16px;
-  font-weight: bold;
 }
 
 .card-content {
