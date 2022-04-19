@@ -1,5 +1,5 @@
 import { useState } from "react";
-import GuessWordContainer from "../GuessWordContainer";
+import GuessWordContainer from "../guessWord/GuessWordContainer";
 
 const Content = () => {
   const [hasBegun, setHasBegun] = useState(false);
