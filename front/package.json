@@ -1,6 +1,6 @@
 {
-  "name": "apprendre_par_coeur",
-  "version": "0.1.0",
+  "name": "apprendre_par_coeur_front",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
