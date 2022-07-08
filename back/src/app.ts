@@ -1,5 +1,5 @@
 import express from "express";
-import wordDefintions from "./routes/wordDefinitions";
+import wordDefintions from "./routes/api/wordDefinitions";
 
 console.log(wordDefintions);
 
