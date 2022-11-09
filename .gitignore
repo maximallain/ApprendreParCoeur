@@ -30,3 +30,5 @@ back/node_modules
 back/dist
 env/
 db.sqlite3
+*.pyc
+__pycache__/
