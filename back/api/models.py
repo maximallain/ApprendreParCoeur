@@ -5,6 +5,5 @@ class WordDefinition(models.Model):
     definition = models.TextField()
     updated = models.DateTimeField(auto_now = True, blank = True)
 
-
     def __str__(self):
         return self.word
