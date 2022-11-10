@@ -1,7 +1,7 @@
 from django.db import models
 
 class WordDefinition(models.Model):
-    word = models.CharField(max_length=80)
+    word = models.CharField(max_length=80, unique=True)
     definition = models.TextField()
     updated = models.DateTimeField(auto_now = True, blank = True)
 
