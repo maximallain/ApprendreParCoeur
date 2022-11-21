@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
+import { useQuery } from "react-query";
 import "./GuessWordContainer.css";
 import WordCardContent from "./WordCardContent";
 
@@ -57,6 +58,16 @@ const GuessWordContainer = () => {
       setWordDefinitionIndex(wordDefinitionIndex + 1);
     }
   }, []);
+
+  const { isLoading, error, data } = useQuery("repoData", () =>
+    fetch("/api/word_definitions/?format=json").then((res) => {
+      console.log("res", res);
+      return res.json();
+    })
+  );
+  console.log("isLoading", isLoading);
+  console.log("data", data);
+  console.log("error", error);
 
   const displayNextWord = (incrementingScore: boolean) => {
     increment(wordDefinitionIndex);
