@@ -26,11 +26,7 @@ const Content = () => {
 
   const content = isLoading ? <div>Chargement des mots...</div> : <GuessWordContainer wordDefinitions={data} />;
 
-  return (
-    <div className="container is-flex is-justify-content-center is-align-items-center">
-      {hasBegun ? content : beginButton}
-    </div>
-  );
+  return <div className="container mt-6 is-flex is-justify-content-center">{hasBegun ? content : beginButton}</div>;
 };
 
 export default Content;
